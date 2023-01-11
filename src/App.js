@@ -1,24 +1,23 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from './components/Home';
 import ItemListContainer from './components/ItemListContainer';
-//import Dogs from "./pages/Dogs"
-//import Cats from "./pages/Cats"
-//import Sheeps from "./pages/Sheeps"
-//import Goats from "./pages/Goats"
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
+
 function App() {
   return (
     <div>
-    <Router>
-      <Navbar />
-      <ItemListContainer gretting="Bienvenido a PokeMartFan"/>
-      {/*<Switch>
-        <Route path='/' exact component={Dogs} />
-        <Route path='/Productos' component={Cats} />
-        <Route path='/Contacto' component={Sheeps} />
-        <Route path='/RedesSociales' component={Goats} />
-  </Switch>*/}
-    </Router>
+         <BrowserRouter>
+       <Navbar />
+    <Routes>
+        <Route path="/" element={ <ItemListContainer /> }/>
+        <Route path="/home" element={ <Home/> }/>
+        <Route path="/productos/:categoryId" element={ <ItemListContainer /> }/>
+        <Route path="/item/:itemId" element={ <ItemDetailContainer />} />
+    </Routes>
+    </BrowserRouter>
     </div>
   
   );

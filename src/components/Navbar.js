@@ -7,14 +7,10 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import Logo from "../assets/Pokeball_logo.png";
+import { Link } from 'react-router-dom';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 import CartWidget from './CartWidget';
-
-const pages = ['Productos', 'Contacto', 'Redes Sociales'];
-
 
 const Navbar= () =>{
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -31,12 +27,20 @@ const Navbar= () =>{
       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Link to="/">
+          <Box
+            component="img"
+            sx={{
+            height: 64,
+            }}
+            alt="Your logo."
+            src={Logo}
+        />
+        </Link>
             <Typography
               variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -79,14 +83,9 @@ const Navbar= () =>{
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+               
               </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
               variant="h5"
               noWrap
@@ -106,15 +105,14 @@ const Navbar= () =>{
               Pokefan Mart
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              ))}
+            <Breadcrumbs aria-label="breadcrumb">
+            <Link to="/home">Inicio</Link>
+                    <Link  to="/productos/plushies">Peluches</Link>
+                    <Link  to="/productos/toys">Juguetes</Link>
+                    <Link  to="/productos/clothing">Ropa</Link>
+                    <Link  to="/productos/figures">Figuras</Link>
+                    <Link  to="/productos/games">Juegos</Link>
+            </Breadcrumbs>
             </Box>
   
            <CartWidget/>
