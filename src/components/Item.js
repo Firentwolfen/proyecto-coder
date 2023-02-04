@@ -12,11 +12,12 @@ const Item = ( {name, image, description, price, category, id} ) => {
 
     return (
         <div>
- <Card sx={{ maxWidth: 345 }}>
+ <Card sx={{ minWidth:200 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 300, objectPosition:'top' }}
         image={image}
         title={name}
+
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -30,7 +31,7 @@ const Item = ( {name, image, description, price, category, id} ) => {
         </Typography>
       </CardContent>
       <CardActions>
-            <Link to={`/item/${id}`}> 
+            <Link className="linknav" to={`/item/${id}`}> 
             <Button variant="contained" startIcon={<NavigateNextIcon />}> Ver mas </Button>
             </Link>
       </CardActions>

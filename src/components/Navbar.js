@@ -11,10 +11,13 @@ import Logo from "../assets/Pokeball_logo.png";
 import { Link } from 'react-router-dom';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import CartWidget from './CartWidget';
+import { useLoginContext } from '../context/LoginContext'
+import { Button } from '@mui/material';
 
 const Navbar= () =>{
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    
+    const { user, logout } = useLoginContext()
+
       const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
     };
@@ -24,7 +27,7 @@ const Navbar= () =>{
     };
   
       return (
-      <AppBar position="static">
+      <AppBar position="static" color='primary'>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
           <Link to="/">
@@ -106,18 +109,30 @@ const Navbar= () =>{
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Breadcrumbs aria-label="breadcrumb">
-            <Link to="/home">Inicio</Link>
-                    <Link  to="/productos/plushies">Peluches</Link>
-                    <Link  to="/productos/toys">Juguetes</Link>
-                    <Link  to="/productos/clothing">Ropa</Link>
-                    <Link  to="/productos/figures">Figuras</Link>
-                    <Link  to="/productos/games">Juegos</Link>
+            <Link className='linknav' to="/home">Inicio</Link>
+                    <Link className='linknav' to="/productos/plushies">Peluches</Link>
+                    <Link className='linknav' to="/productos/toys">Juguetes</Link>
+                    <Link className='linknav' to="/productos/clothing">Ropa</Link>
+                    <Link className='linknav' to="/productos/figures">Figuras</Link>
+                    <Link className='linknav' to="/productos/games">Juegos</Link>
             </Breadcrumbs>
             </Box>
-  
            <CartWidget/>
+           <div>
+           <Typography
+              variant="body1"
+              noWrap
+              marginLeft={2}
+              component="a"
+            >
+             Bienvenido: {user.email}
+            </Typography>
+            <Button variant="text" color="error" onClick={logout}>Logout</Button>
+            </div>
           </Toolbar>
+          
         </Container>
+       
       </AppBar>
     );
 }

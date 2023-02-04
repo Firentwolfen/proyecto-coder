@@ -1,32 +1,37 @@
 import { useEffect, useState } from "react"
-import { pedirDatos } from "../helpers/pedirDatos"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
+import useCollection from '../hooks/useCollection'
+import { where } from "firebase/firestore"
 
 const ItemListContainer = () => {
-
-    const [productos, setProductos] = useState([])
+    const [nompag, setNompag] = useState('')
     const { categoryId } = useParams()
    
     useEffect(() => {
-        pedirDatos()
-            .then((res) => {
                 if (categoryId) {
-                    setProductos( res.filter(prod => prod.category === categoryId) )
+                    setNompag(`Lista de productos de ${categoryId}`)
                 } else {
-                    setProductos(res)
+                    setNompag('Lista de todos los Productos')
                 }
-                
-            })
-            .catch((err) => {
-                console.log(err)
-            })
     }, [categoryId])
 
+    const { data, loading } = useCollection(
+        "productos",
+        [categoryId],
+        categoryId && 
+        [
+            where("category", "==", categoryId)
+        ]
+    )
     return (
-        <div>          
-            <ItemList productos={productos}/>
-        </div>
+        <div>
+        {
+            loading
+                ? <h2>Cargando...</h2>
+                : <ItemList productos={data} nombrepagina={nompag}/>
+        }
+    </div>
     )
 }
 

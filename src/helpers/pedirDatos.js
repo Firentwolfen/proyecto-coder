@@ -1,4 +1,4 @@
-import MOCK_DATA from '../Pokemon Products.json'
+import MOCK_DATA from '../Pokemon_Products.json'
 
 export const pedirDatos = () => {
     return new Promise((resolve, reject) => {

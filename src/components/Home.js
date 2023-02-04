@@ -1,6 +1,6 @@
 import { ImageList, ImageListItem } from '@mui/material';
 import { Container } from '@mui/system';
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from '../assets/Logo_PokeMartFan.png';
 import yoshi from '../assets/yoshidascoffee.png';
 import macro from '../assets/Macro_Cosmos_logo.webp';
@@ -19,6 +19,10 @@ const Home = ({gretting}) => {
 {img: GalarMin, title: "Galar Minerals" },
 {img: Altru, title: "Altru Inc." },
  ]
+
+ useEffect(() => {
+  document.title = 'Inicio PokeMart';
+}, []);
 
   return (
     <div>

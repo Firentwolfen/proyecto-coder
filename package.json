@@ -2,6 +2,11 @@
   "name": "proyecto-coder",
   "version": "0.1.0",
   "private": true,
+  "babel": {
+    "plugins": [
+      "@babel/plugin-syntax-import-assertions"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -11,11 +16,14 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "firebase": "^9.17.1",
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
