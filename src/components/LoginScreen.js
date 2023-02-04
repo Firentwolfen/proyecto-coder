@@ -45,7 +45,7 @@ const LoginScreen = () => {
                         onChange={handleInputChange}
                         name="password"
             />  
-                   <Button variant="text" color="primary" disabled={loading}>{loading ? 'Cargando...' : 'Ingresar'}</Button>     
+                   <Button variant="text" color="primary" type='submit' disabled={loading}>{loading ? 'Cargando...' : 'Ingresar'}</Button>     
                    {user.error && <p className='error'>{user.error}</p>}
                 </form>
                 <Button variant="contained" color="primary" endIcon={<GoogleIcon/>} onClick={googleLogin}>Ingresar con google</Button>

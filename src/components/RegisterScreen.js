@@ -49,8 +49,8 @@ const RegisterScreen = () => {
             name="password"
           />
 
-          <Button variant="text" color="primary" disabled={loading}>
-            {loading ? "Cargando..." : "Ingresar"}
+          <Button variant="text" type='submit' color="primary" disabled={loading}>
+            {loading ? "Cargando..." : "Registrar"}
           </Button>
           {user.error && <p className="error">{user.error}</p>}
         </form>
